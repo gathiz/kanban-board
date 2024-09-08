@@ -1,6 +1,6 @@
 export type Board = {
     name: string;
-    columns: Column[]
+    columns: Column[];
 }
 
 export type Column = {

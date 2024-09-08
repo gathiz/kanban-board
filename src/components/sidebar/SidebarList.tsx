@@ -1,17 +1,27 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { selectAllBoards } from "../../store/boardSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
+import { selectAllBoards, setActiveBoard } from "../../store/boardSlice";
 import { Board } from "../../types";
 import SidebarItem from "./SidebarItem";
 import { useState } from "react";
 
-const BoardList = () => {
+const SidebarList = () => {
+
+    const useAppDispatch = () => useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
+
     const boards: Board[] = useSelector((state: RootState) => selectAllBoards(state));
 
     const [active, setActive] = useState(-1);
 
     const handleClick = (id: string) => {
-        setActive(parseInt(id));
+        const index = parseInt(id);
+        setActive(index);
+        dispatch(setActiveBoard({boardIndex: index}));
+    }
+
+    const newBoardHandler = () => {
+
     }
 
     return (
@@ -26,12 +36,16 @@ const BoardList = () => {
                     onClick={handleClick}
                     active={index === active ? true : false} />
             ))}
-
-            <div>
-                <p className="text-sm my-4">+ Create New Board</p>
-            </div>
+            <hr />
+            <SidebarItem
+                id="4"
+                icon="src/assets/icon-board.svg"
+                title="+Create New Board"
+                active={false}
+                onClick={newBoardHandler}
+            />
         </div>
     );
 }
 
-export default BoardList;
+export default SidebarList;

@@ -7,7 +7,8 @@ const initialState: BoardState = {
 };
 
 interface BoardState {
-    boards: Board[]
+    boards: Board[],
+    active?: number
 }
 
 export const boardSlice = createSlice({
@@ -19,6 +20,10 @@ export const boardSlice = createSlice({
             boards.forEach((board: Board) => {
                 state.boards.push(board)
             });
+        },
+        setActiveBoard: (state, action: PayloadAction<{boardIndex: number}>) => {
+            const boardIndex = action.payload.boardIndex;
+            state.active = boardIndex;
         },
         addBoard: (state, action: PayloadAction<{ newBoard: Board, boardIndex: number }>) => {
             const { newBoard, boardIndex } = action.payload;
@@ -88,11 +93,17 @@ export const {
     updateSubtask,
     updateTaskStatus,
     editTask,
-    editBoard
+    editBoard,
+    setActiveBoard
 } = boardSlice.actions;
 
 export default boardSlice.reducer;
 
 export const selectBoards = (state: RootState) => state.board.boards;
 
+export const selectActive = (state: RootState) => state.board.active;
+
 export const selectAllBoards = createSelector([selectBoards], (boards) => boards);
+
+
+

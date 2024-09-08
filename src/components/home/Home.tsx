@@ -1,10 +1,11 @@
 import Navbar from "../navbar/Navbar";
+import ColumnList from "../column/ColumnList";
 
 const Home = () => {
     return(
-        <div className="flex flex-col w-full px-2 mt-6 h-full">
+        <div className="flex flex-col w-full h-full">
             <Navbar title="Select a board"/>
-            <h1>Home</h1>
+            <ColumnList/>
         </div>
     );
 }
