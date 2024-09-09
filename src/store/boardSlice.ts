@@ -101,9 +101,6 @@ export default boardSlice.reducer;
 
 export const selectBoards = (state: RootState) => state.board.boards;
 
-export const selectActive = (state: RootState) => state.board.active;
+export const selectActiveIndex = (state: RootState) => state.board.active || 0;
 
 export const selectAllBoards = createSelector([selectBoards], (boards) => boards);
-
-
-

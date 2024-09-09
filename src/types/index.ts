@@ -19,3 +19,9 @@ export type Subtask = {
     title: string;
     isCompleted: boolean;
 };
+
+export type CardIndex = {
+    boardIndex: number;
+    columnIndex: number;
+    taskIndex: number;
+}
