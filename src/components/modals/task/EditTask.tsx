@@ -9,7 +9,7 @@ interface TaskbarModalProps {
     onClose: () => void;
 }
 
-const TaskbarModal: React.FC<TaskbarModalProps> = (props) => {
+const EditTask: React.FC<TaskbarModalProps> = (props) => {
 
     if (!props.isOpen) return null;
     return (
@@ -27,9 +27,14 @@ const TaskbarModal: React.FC<TaskbarModalProps> = (props) => {
                     isComplete={subtask.isCompleted} />
             ))}
             <p className="font-bold mx-4">Current Status</p>
-            <Dropdown onChange={props.onClose} select={props.task?.status} columnIndex={props.colIndex} taskTitle={props?.task?.title} />
+            <Dropdown
+                onChange={props.onClose}
+                select={props.task?.status}
+                columnIndex={props.colIndex}
+                taskTitle={props?.task?.title}
+            />
         </div>
     );
 }
 
-export default TaskbarModal;
+export default EditTask;

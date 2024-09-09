@@ -5,10 +5,15 @@ import { Board } from "../../types";
 import SidebarItem from "./SidebarItem";
 import { useState } from "react";
 
-const SidebarList = () => {
+interface SidebarListProps {
+    onCreateClick: () => void;
+}
+
+const SidebarList: React.FC<SidebarListProps> = ({onCreateClick}) => {
 
     const useAppDispatch = () => useDispatch<AppDispatch>();
     const dispatch = useAppDispatch();
+
 
     const boards: Board[] = useSelector((state: RootState) => selectAllBoards(state));
 
@@ -20,8 +25,8 @@ const SidebarList = () => {
         dispatch(setActiveBoard({boardIndex: index}));
     }
 
-    const newBoardHandler = () => {
-
+    const handleCreateClick = () => {
+        onCreateClick();
     }
 
     return (
@@ -42,7 +47,7 @@ const SidebarList = () => {
                 icon="src/assets/icon-board.svg"
                 title="+Create New Board"
                 active={false}
-                onClick={newBoardHandler}
+                onClick={handleCreateClick}
             />
         </div>
     );

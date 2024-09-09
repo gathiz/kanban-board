@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Column, Task } from "../../types";
 import TaskCard from "../task/TaskCard";
-import TaskbarModal from "../modals/Taskbar/TaskbarModal";
+import EditTask from "../modals/task/EditTask";
 
 interface BoardColumnProps {
     column: Column;
@@ -38,7 +38,7 @@ const BoardColumn: React.FC<BoardColumnProps> = ({ column, colIndex }) => {
                     }}
                     onClick={handleClick} />
             ))}
-            <TaskbarModal
+            <EditTask
                 task={task}
                 isOpen={isOpen}
                 onClose={handleClose}
