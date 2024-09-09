@@ -12,7 +12,7 @@ interface TaskbarItemProps {
     columnIndex: number;
 }
 
-const TaskbarItem: React.FC<TaskbarItemProps> = ({ title, subtitle, isComplete, subtaskIndex, columnIndex }) => {
+const EditTaskItem: React.FC<TaskbarItemProps> = ({ title, subtitle, isComplete, subtaskIndex, columnIndex }) => {
 
     const useAppDispatch = () => useDispatch<AppDispatch>();
     const dispatch = useAppDispatch();
@@ -51,4 +51,4 @@ const TaskbarItem: React.FC<TaskbarItemProps> = ({ title, subtitle, isComplete, 
     );
 }
 
-export default TaskbarItem;
+export default EditTaskItem;

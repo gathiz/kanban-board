@@ -1,5 +1,5 @@
 import { useState } from "react";
-import NewTask from "../modals/task/NewTask";
+import NewTask from "../modals/new/NewTask";
 
 interface NavbarProps {
     title: string;

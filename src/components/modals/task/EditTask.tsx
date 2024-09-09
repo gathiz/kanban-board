@@ -1,6 +1,6 @@
 import { Task } from "../../../types";
 import Dropdown from "./Dropdown";
-import TaskbarItem from "./TaskbarItem";
+import TaskbarItem from "./EditTaskItem";
 
 interface TaskbarModalProps {
     task?: Task;
